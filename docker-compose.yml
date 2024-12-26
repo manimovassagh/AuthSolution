@@ -1,32 +1,13 @@
 version: "3.8"
 services:
-  backend:
-    build:
-      context: ./backend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - keycloak
-    environment:
-      - KEYCLOAK_URL=http://keycloak:8080
-      - KEYCLOAK_REALM=my-realm
-      - KEYCLOAK_CLIENT_ID=my-nextjs-app
-
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
   keycloak:
     image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
     ports:
       - "8081:8080"
-    command: start-dev --import-realm
     volumes:
       - ./keycloak-config:/opt/keycloak/data/import
+    command: start-dev --import-realm
