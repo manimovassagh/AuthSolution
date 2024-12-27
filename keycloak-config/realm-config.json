@@ -1,10 +1,10 @@
 {
-  "realm": "my-realm",
+  "realm": "auth_solution",
   "enabled": true,
   "registrationAllowed": true,
   "clients": [
     {
-      "clientId": "my-nextjs-app",
+      "clientId": "auth_front",
       "enabled": true,
       "protocol": "openid-connect",
       "publicClient": true,

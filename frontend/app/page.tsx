@@ -25,6 +25,8 @@ export default function HomePage() {
         setAuthenticated(auth);
         if (auth) {
           setUsername(keycloak.tokenParsed?.preferred_username || null);
+          console.log(keycloak.tokenParsed);
+          
         }
       })
       .catch((error) => {
