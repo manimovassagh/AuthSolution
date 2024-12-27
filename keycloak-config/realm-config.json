@@ -1,6 +1,7 @@
 {
   "realm": "my-realm",
   "enabled": true,
+  "registrationAllowed": true,
   "clients": [
     {
       "clientId": "my-nextjs-app",
