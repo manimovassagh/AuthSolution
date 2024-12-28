@@ -44,7 +44,7 @@ cd AuthSolution
 ### **3. Install Dependencies**
 ```bash
 npm install
-```
+```bash
 
 ### **4. Start Keycloak**
 
@@ -59,7 +59,7 @@ docker run -d \
   -e KEYCLOAK_ADMIN_PASSWORD=admin \
   quay.io/keycloak/keycloak:latest \
   start-dev
-```
+```bash
 
 #### Manually
 
@@ -165,6 +165,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions, feel free to reach out:
 
-
 - **Author**: Your Name
+
 - **Email**: <your.email@example.com>
