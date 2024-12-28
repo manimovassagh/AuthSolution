@@ -6,6 +6,6 @@ docker-down:
 docker-up: docker-down
 	docker compose up -d
 
-	sleep 5
+	sleep 10
 front: docker-up 
 	cd frontend && npm run dev
