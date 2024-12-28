@@ -31,6 +31,10 @@ const verifyJWT = (req: express.Request, res: express.Response, next: express.Ne
     const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'] });
     console.log('Decoded Token:', decoded); // Log the decoded token
     //@ts-ignore
+    const roles = decoded.realm_access?.roles || [];
+
+    console.log('User Roles:', roles);
+    //@ts-ignore
     req.user  = decoded; // You can pass the decoded user info to the request object
     next(); // Continue to the next middleware or route handler
   } catch (error) {
