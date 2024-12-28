@@ -32,6 +32,8 @@ export default function HomePage() {
       .catch((error) => {
         clearTimeout(timer); // Clear timeout on error
         console.error('Keycloak initialization failed:', error);
+        console.log("shows the error", error);
+        
       })
       .finally(() => {
         setLoading(false);
