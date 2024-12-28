@@ -30,6 +30,18 @@
         }
       ],
       "realmRoles": ["user"]
+    },
+    {
+      "username": "admin",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["admin"]
     }
   ]
 }
