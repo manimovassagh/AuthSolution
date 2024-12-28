@@ -7,4 +7,5 @@ frontend/.env.test.local
 frontend/.env.production.local
 frontend/.cache
 frontend/.eslintcache
-
+backend/node_modules
+backend/.env

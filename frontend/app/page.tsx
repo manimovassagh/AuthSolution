@@ -1,56 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import keycloak from '../services/keycloak';
+import Link from 'next/link';
+import { useAuth } from './context/AuthContext';
 
 export default function HomePage() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [username, setUsername] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); // Stop loading if timeout
-      console.warn('Keycloak initialization timed out.');
-    }, 10000); // 10 seconds timeout
-
-    keycloak
-      .init({
-        onLoad: 'check-sso', // Check silently if the user is logged in
-        silentCheckSsoRedirectUri: `${window.location.origin}/silent-check-sso.html`,
-        pkceMethod: 'S256',
-      })
-      .then((auth) => {
-        clearTimeout(timer); // Clear timeout on success
-        setAuthenticated(auth);
-        if (auth) {
-          setUsername(keycloak.tokenParsed?.preferred_username || null);
-          console.log(keycloak.tokenParsed);
-          
-        }
-      })
-      .catch((error) => {
-        clearTimeout(timer); // Clear timeout on error
-        console.error('Keycloak initialization failed:', error);
-        console.log("shows the error", error);
-        
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  const handleLogin = () => {
-    keycloak.login();
-  };
-
-  const handleLogout = () => {
-    keycloak.logout();
-  };
-
-  if (loading) {
-    return <p className="text-center mt-20">Loading...</p>;
-  }
+  const { authenticated, username, login, logout } = useAuth();
 
   if (!authenticated) {
     return (
@@ -64,7 +18,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold mb-4">Welcome to AuthSolution</h2>
           <p className="mb-6">Your trusted solution for authentication and security.</p>
           <button
-            onClick={handleLogin}
+            onClick={login}
             className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all"
           >
             Login to Get Started
@@ -81,12 +35,18 @@ export default function HomePage() {
           <h1 className="text-xl font-bold">AuthSolution</h1>
           <div>
             <div className="flex items-center space-x-4">
+            <Link className="px-4 py-2 bg-teal-900 text-white rounded transition-all" href="/headers">
+               
+           
+
+                See Token
+              </Link>
               <span className="text-gray-700 font-medium">
                 {username ? `Hello, ${username}` : 'Authenticated'}
               </span>
               <button
-                onClick={handleLogout}
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-all"
+                onClick={logout}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-red-600 transition-all"
               >
                 Logout
               </button>
