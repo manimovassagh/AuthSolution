@@ -1,9 +1,9 @@
 .PHONY: dev
 
-docker-down:
+down:
 	docker compose down
 	
-docker-up: docker-down
+docker-up: 
 	docker compose up -d
 
 	sleep 10

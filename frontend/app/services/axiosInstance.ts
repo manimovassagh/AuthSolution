@@ -3,7 +3,7 @@ import keycloak from '../../services/keycloak';
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/', // Replace with your backend's base URL
+  baseURL: 'http://localhost:9001/', // Replace with your backend's base URL
   timeout: 10000, // Optional: Timeout for requests
 });
 

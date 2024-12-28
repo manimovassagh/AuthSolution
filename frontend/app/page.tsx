@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useAuth } from './context/AuthContext';
 
 export default function HomePage() {
@@ -34,6 +35,12 @@ export default function HomePage() {
           <h1 className="text-xl font-bold">AuthSolution</h1>
           <div>
             <div className="flex items-center space-x-4">
+            <Link className="px-4 py-2 bg-teal-900 text-white rounded transition-all" href="/headers">
+               
+           
+
+                See Token
+              </Link>
               <span className="text-gray-700 font-medium">
                 {username ? `Hello, ${username}` : 'Authenticated'}
               </span>

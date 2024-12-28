@@ -23,7 +23,7 @@ export default function HeadersPage() {
 
     try {
       // Make the request to fetch headers with Bearer token
-      const response = await axiosInstance.get('/protected/admin', {
+      const response = await axiosInstance.get('/protected', {
         headers: { Authorization: `Bearer ${token}` }, // Include Bearer token
       });
 
