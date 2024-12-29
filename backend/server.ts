@@ -5,7 +5,7 @@ import { checkRole } from "./auth/role_middleware";
 const app = express();
 const port = 9001;
 
-
+// Public Key (replace with your actual public key)
 
 // CORS setup
 const corsOptions = {
@@ -23,8 +23,8 @@ app.get(
   verifyJWT as any,
   checkRole("user") as any,
   (req: express.Request, res: express.Response) => {
-    //@ts-expect-error
-    res.json({ message: "Access granted", user: req.user });
+    //@ts-ignore
+    res.json({ message: "Access granted", user: req.userWithRoles });
   }
 );
 
