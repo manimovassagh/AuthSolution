@@ -46,7 +46,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = () => keycloak.login();
-  const logout = () => keycloak.logout();
+  const logout = () =>{
+    keycloak.logout();
+  } 
 
   if (loading) {
     return <p className="text-center mt-20">Loading...</p>;
