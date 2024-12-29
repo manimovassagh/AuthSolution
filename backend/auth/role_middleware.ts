@@ -9,6 +9,7 @@ export const checkRole = (requiredRole: string) => {
       return res.status(403).json({ message: "Roles not found or invalid" });
     }
 
+    
     if (!roles.includes(requiredRole)) {
       return res.status(403).json({ message: `Access denied: Requires role '${requiredRole}'` });
     }
