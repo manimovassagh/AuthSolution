@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import keycloak from "../../services/keycloak"; // Assuming you have keycloak initialized somewhere
 import axiosInstance from "../services/axiosInstance";
-import Link from "next/link";
 
 export default function HeadersPage() {
   const [headers, setHeaders] = useState<Record<string, string> | null>(null);
@@ -17,7 +17,6 @@ export default function HeadersPage() {
       setToken(keycloak.token); // Set the token in the state
     }
   }, []);
-
   const fetchHeaders = async () => {
     setLoading(true);
     setError(null);
