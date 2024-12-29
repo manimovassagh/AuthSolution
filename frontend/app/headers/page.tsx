@@ -9,7 +9,7 @@ export default function HeadersPage() {
   const [headers, setHeaders] = useState<Record<string, string> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [token, setToken] = useState<string | null>(null); // State to hold the Bearer token
+  const [token, setToken] = useState<string | null>(null); 
 
   // Extract token from Keycloak on mount
   useEffect(() => {
@@ -40,17 +40,19 @@ export default function HeadersPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-      <h1 className="text-2xl font-bold mb-4">Request Headers Viewer</h1>
-
+      <h1 className="text-2xl font-bold mb-4">Parsed Token View</h1>
+      <div>
+  <pre>{JSON.stringify(keycloak.tokenParsed, null, 2)}</pre>
+</div>
       {/* Display the Bearer token */}
       {token && (
-        <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-4 mb-6">
-          <h2 className="text-xl font-medium mb-3">Bearer Token:</h2>
-          <pre className="text-sm bg-gray-100 p-2 rounded-md overflow-x-auto">
-            {token}
-          </pre>
-        </div>
-      )}
+  <div className="w-full max-w-4xl bg-white shadow-md rounded-lg p-6 mb-6">
+    <h2 className="text-xl font-medium mb-3">Bearer Token:</h2>
+    <pre className="text-sm bg-gray-100 p-4 rounded-md overflow-x-auto break-all">
+      {token}
+    </pre>
+  </div>
+)}
 
       <button
         onClick={fetchHeaders}
