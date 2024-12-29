@@ -1,6 +1,7 @@
 import express from "express";
+import Roles from "./Roles";
 
-export const checkRole = (requiredRole: string) => {
+export const checkRole = (requiredRole: Roles) => {
   return (req: express.Request, res: express.Response, next: express.NextFunction) => {
     //@ts-ignore
     const roles = req.role;
