@@ -13,6 +13,6 @@ export const checkRole = (requiredRole: string) => {
       return res.status(403).json({ message: `Access denied: Requires role '${requiredRole}'` });
     }
 
-    next(); // Role is valid, proceed to the next middleware or route
+    next(); 
   };
 };
