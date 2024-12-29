@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.ts"
   },
-  "author": "",
+  "author": "Mani Movassagh",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.17",
