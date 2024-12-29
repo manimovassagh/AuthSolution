@@ -17,13 +17,24 @@ export const verifyJWT = (req: express.Request, res: express.Response, next: exp
   try {
     // Verify the JWT using the public key
     const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'] });
-    console.log('Decoded Token:', decoded); // Log the decoded token
+    //console.log('Decoded Token:', decoded); // Log the decoded token
     //@ts-ignore
     const roles = decoded.realm_access?.roles || [];
 
-    console.log('User Roles:', roles);
     //@ts-ignore
+
+    // Combine the user and role object in one object
+    const userWithRoles = {
+      user: decoded,
+      roles: roles
+    };
+  //@ts-ignore
+    req.userWithRoles = userWithRoles; // You can pass the combined object to the request object
+    //@ts-ignore
+
     req.user  = decoded; // You can pass the decoded user info to the request object
+      //@ts-ignore
+    req.role = roles; // You can pass the roles to the response object
     next(); // Continue to the next middleware or route handler
   } catch (error) {
     console.error('Token verification failed:', error);

@@ -21,7 +21,10 @@ app.use(cors(corsOptions)); // Apply CORS middleware
 app.get('/protected', verifyJWT as any, (req: express.Request, res: express.Response) => {
  
   //@ts-ignore
-  res.json({ message: 'Access granted', user: req.user });
+  console.log('User parameters:', req.userWithRoles);
+    //@ts-ignore
+
+  res.json({ message: 'Access granted', user: req.userWithRoles });
 });
 
 // Start the server
