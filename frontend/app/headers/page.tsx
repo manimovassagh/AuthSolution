@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import keycloak from "../../services/keycloak"; // Assuming you have keycloak initialized somewhere
+import keycloak from "../auth/keycloak"; // Assuming you have keycloak initialized somewhere
 import axiosInstance from "../services/axiosInstance";
 
 export default function HeadersPage() {

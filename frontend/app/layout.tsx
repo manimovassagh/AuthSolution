@@ -1,6 +1,6 @@
 
+import { AuthProvider } from './auth/AuthContext';
 import './styles/globals.css';
-import { AuthProvider } from './context/AuthContext';
 
 export const metadata = {
   title: 'AuthSolution',

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './auth/AuthContext';
 
 export default function HomePage() {
   const { authenticated, username, login, logout } = useAuth();
